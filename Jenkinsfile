@@ -4,8 +4,8 @@ pipeline {
     stages {
         stage('Docker构建') {
             steps {
-                //trySh "docker rm -f ws-scrcpy"
-                //trySh "docker image rm xujiaji/ws-scrcpy"
+                trySh "docker rm -f ws-scrcpy"
+                trySh "docker image rm xujiaji/ws-scrcpy"
                 trySh "docker build -t xujiaji/ws-scrcpy ."
             }
         }
@@ -21,6 +21,6 @@ def trySh(shtext) {
     try {
         sh shtext
     } catch(e) {
-       throw e
+        e.printStackTrace()
     }
 }
