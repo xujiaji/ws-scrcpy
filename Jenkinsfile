@@ -11,7 +11,7 @@ pipeline {
         }
         stage('部署') {
             steps {
-                trySh "docker run --name 'ws-scrcpy' -d  --net='host' -e TZ=\"Asia/Shanghai\" -e HOST_OS=\"Unraid\" -e HOST_HOSTNAME=\"Babay\" -e HOST_CONTAINERNAME=\"ws-scrcpy\" -e 'PUID'='99' -e 'PGID'='100' -l net.unraid.docker.managed=dockerman -l net.unraid.docker.webui='http://[IP]:[PORT:8000]/' -p '8000:8000/tcp' xujiaji/ws-scrcpy"
+                trySh "docker run --name 'ws-scrcpy' --device='/dev/bus/usb/001/014' -d  --net='host' -e TZ=\"Asia/Shanghai\" -e HOST_OS=\"Unraid\" -e HOST_HOSTNAME=\"Babay\" -e HOST_CONTAINERNAME=\"ws-scrcpy\" -e 'PUID'='99' -e 'PGID'='100' -l net.unraid.docker.managed=dockerman -l net.unraid.docker.webui='http://[IP]:[PORT:8000]/' -p '8000:8000/tcp' xujiaji/ws-scrcpy"
             }
         }
     }
